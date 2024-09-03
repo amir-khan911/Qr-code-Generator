@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>own qr</title>
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+         }
+         body{
+            background-color: antiquewhite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+         }
+
+         .qr-container{
+          border: 2px solid aqua;
+          border-radius: 10px;
+          padding: 30px;
+          width: 650px;
+          box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+          background-color: #ffffff;
+         }
+         h1{
+            text-align: center;
+            margin-bottom: 20px;
+         }
+         #qr-input{
+            display: block;
+            margin-bottom: 20px;
+            width: 100%;
+            font-size: 20px;
+            font-weight: 600;
+            padding: 15px;
+            border-radius: 12px;
+         }
+
+         #qr-button{
+           
+            margin-bottom: 20px;
+            width: 100%;
+            font-size: 20px;
+            font-weight: 700;
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            background-color: aquamarine;
+            transition: 0.7s ease-in-out;
+
+          
+         }
+         #qr-button:hover{
+            color: white;
+            background-color: black;
+         }
+
+         #qr-image{
+           display: block;
+           width: 50%;
+           margin: 10px auto;
+         }
+    </style>
+</head>
+<body>
+    <div class="qr-container">
+        <h1>Qr Code Generator</h1>
+
+        <input type="text" id="qr-input" placeholder="Pest Link Here" autocomplete="off">
+
+        <button id="qr-button">Click Here To Generator Qr Code</button>
+
+        <img src="" alt="" id="qr-image">
+    </div>
+
+    <script>
+        let qrInput = document.querySelector("#qr-input");
+        let qrImage = document.querySelector("#qr-image");
+        let qrbutton = document.querySelector("#qr-button");
+
+        qrbutton.addEventListener('click', ()=>{
+             const inputValue = qrInput.value;
+             console.log(inputValue);
+
+             if(!inputValue){
+                alert("Plz Enter The Vaild Url");
+                return;
+             }else{
+                qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${inputValue}`;
+                arimage.alt = `the code of ${inputValue}`
+             }
+
+             
+        })
+    </script>
+</body>
+</html>
